@@ -8,6 +8,9 @@ var facing="right";
 var score=0;
 var cheeses;
 
+var sense6;
+var senseEnabled=false;
+
 var style = { font: "24px Arial", fill: "#000"};
 
 
@@ -17,6 +20,9 @@ myGame.Game.prototype = {
     },
   create: function() {
     score=0;
+    if(localStorage.getItem("sense")=="true"){
+      senseEnabled=true;
+    }
     cheeses=parseInt(localStorage.getItem("cheeses"))
     //create Environment
     this.bg = this.game.add.sprite(0,0, 'background');
@@ -126,8 +132,17 @@ myGame.Game.prototype = {
     this.game.physics.arcade.enable(this.arm);
     this.arm.body.velocity.y = 500;
     this.arm.anchor.setTo(0.5,1);
+
+    if(senseEnabled){
+      sense6 = this.game.add.sprite(this.arm.position.x,70, 'danger');
+      sense6.anchor.setTo(0.5);
+      sense6.scale.set(0.6);
+    }
   },
   armAction: function(table,arm){
+
+    if(senseEnabled)sense6.destroy();
+
     if(!ended){
       this.playSound(this.hit);
       score++;
@@ -135,7 +150,7 @@ myGame.Game.prototype = {
 
       this.game.camera.shake(0.01,150,0);
       arm.body.velocity.y=-1500;
-      this.game.time.events.add(1000, function(){
+      this.game.time.events.add(rint(600,2500), function(){
         arm.body.velocity.y = 1200;
         var choice = rint(1,2);
         if(choice==1){
@@ -150,6 +165,13 @@ myGame.Game.prototype = {
          }else{
           arm.scale.setTo(1,1);
          }
+
+        if(senseEnabled){
+          sense6 = this.game.add.sprite(arm.position.x,70, 'danger');
+          sense6.anchor.setTo(0.5);
+          sense6.scale.set(0.6);
+        }
+
       }, this);
     }
   },
@@ -187,6 +209,8 @@ myGame.Game.prototype = {
   gameOver: function() {
     this.playSound(this.hit);
     this.playSound(this.death);
+
+    localStorage.setItem("total_games",1+parseInt(localStorage.getItem("total_games")));
 
     this.game.camera.flash("0xE83838");
     ended=true;

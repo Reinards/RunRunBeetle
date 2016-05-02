@@ -47,6 +47,8 @@ myGame.Preload.prototype = {
     this.load.spritesheet('beetle1', 'assets/images/beetle.png', 80, 40, 9);
     this.load.spritesheet('beetle2', 'assets/images/beetle2.png', 80, 40, 9);
     this.load.spritesheet('beetle3', 'assets/images/beetle3.png', 80, 40, 9);
+    this.load.spritesheet('beetle4', 'assets/images/beetle4.png', 80, 40, 9);
+    this.load.spritesheet('beetle5', 'assets/images/beetle5.png', 80, 40, 9);
     //GUI
     this.load.image('panel', 'assets/images/panel.png');
     this.load.image('panel2', 'assets/images/panel2.png');
@@ -78,10 +80,10 @@ myGame.Preload.prototype = {
     this.progress.text = "Files loaded: "+totalLoaded+"/"+totalFiles;
   },
   create: function() {
-    music = new Phaser.Sound(this.game,'music',1,true);
-    this.playSound(music);
-    // music.play();
-    music.volume = 0.6;
+    // music = new Phaser.Sound(this.game,'music',1,true);
+    // this.playSound(music);
+    // // music.play();
+    // music.volume = 0.6;
 
     this.state.start('Menu');
   },
