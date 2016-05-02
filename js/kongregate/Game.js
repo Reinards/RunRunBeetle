@@ -151,7 +151,7 @@ myGame.Game.prototype = {
       score++;
       this.score_text.text = score;
 
-      this.game.camera.shake(0.01,150,0);
+      this.game.camera.shake(0.01,rint(150,250),0);
       arm.body.velocity.y=-1500;
       this.game.time.events.add(rint(600,2500), function(){
         arm.body.velocity.y = rint(800,1200);
