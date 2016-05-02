@@ -52,6 +52,9 @@ myGame.Game.prototype = {
     
     this.cursors = this.game.input.keyboard.createCursorKeys();
 
+    aKey = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
+    dKey = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
+
     //sounds
     this.hit = this.game.add.audio('hit');
     this.death = this.game.add.audio('death');
@@ -103,12 +106,12 @@ myGame.Game.prototype = {
     this.game.physics.arcade.collide(this.beetle, this.arm, this.gameOver, null, this);
       // this.beetle.body.velocity.y = 0;
 
-      if (this.cursors.left.isDown){
+      if (this.cursors.left.isDown || aKey.isDown){
           this.beetle.body.velocity.x = -500;
           this.beetle.scale.x = -1;
           this.beetle.animations.play('walk');
 
-      }else if (this.cursors.right.isDown){
+      }else if (this.cursors.right.isDown || dKey.isDown){
           this.beetle.body.velocity.x = 500;
           this.beetle.scale.setTo(-1,1);
           this.beetle.scale.x = 1;
