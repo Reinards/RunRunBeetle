@@ -4,6 +4,7 @@ myGame.Preload = function(){};
 
 myGame.Preload.prototype = {
   preload: function() {
+    this.game.stage.disableVisibilityChange = true;
     //show loading screen
     this.preloadBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'preloadbar');
     this.preloadBar.anchor.setTo(0.5);

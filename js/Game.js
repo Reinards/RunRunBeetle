@@ -154,7 +154,7 @@ myGame.Game.prototype = {
       this.game.camera.shake(0.01,150,0);
       arm.body.velocity.y=-1500;
       this.game.time.events.add(rint(600,2500), function(){
-        arm.body.velocity.y = 1200;
+        arm.body.velocity.y = rint(800,1200);
         var choice = rint(1,2);
         if(choice==1){
          arm.position.x = rint(200,650);
