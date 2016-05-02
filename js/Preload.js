@@ -9,6 +9,9 @@ myGame.Preload.prototype = {
     this.preloadBar.anchor.setTo(0.5);
     this.preloadBar.scale.setTo(3);
 
+    this.icon = this.add.sprite(400,150, 'icon');
+    this.icon.anchor.setTo(0.5);
+
     this.progress = this.game.add.bitmapText(400, 350, 'myFont3', 'Files loaded: ', 20)
     this.progress.align = 'center';
     this.progress.x = this.game.width / 2 - this.progress.textWidth / 2 -25;

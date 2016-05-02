@@ -11,11 +11,11 @@ myGame.Boot.prototype = {
   preload: function() {
     //Loading screen assets
     this.load.image('preloadbar', 'assets/images/preloader-bar.png');
-    // this.load.image('icon', 'assets/images/game_icon.png');
+    this.load.image('icon', 'assets/images/icon.png');
     this.load.bitmapFont('myFont3', 'assets/nokia.png', 'assets/nokia.xml');
   },
   create: function() {
-    this.game.stage.backgroundColor = '#1F0045';
+    this.game.stage.backgroundColor = '#570000';
 
     //Centering
     this.scale.pageAlignHorizontally = true;
